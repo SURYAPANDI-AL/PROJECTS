@@ -11,4 +11,8 @@ public interface LoginModelCallBack {
 
 	boolean addAdmin(long sId, String id, String name, String pwd);
 
+	long savings();
+
+	boolean removeFlight(int flightId);
+
 }

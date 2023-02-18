@@ -27,4 +27,14 @@ public class LoginModel implements LoginModelCallBack {
 		// TODO Auto-generated method stub
 		return FlightTicketReservationSystemDataBase.getInstance().addAdmin(sId,id,name,pwd);
 	}
+	@Override
+	public long savings() {
+		// TODO Auto-generated method stub
+		return FlightTicketReservationSystemDataBase.getInstance().savings();
+	}
+	@Override
+	public boolean removeFlight(int flightNumber) {
+		// TODO Auto-generated method stub
+		return FlightTicketReservationSystemDataBase.getInstance().removeflight(flightNumber);
+	}
 }

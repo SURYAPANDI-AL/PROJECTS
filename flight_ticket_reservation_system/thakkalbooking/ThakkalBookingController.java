@@ -1,5 +1,6 @@
 package com.flight_ticket_reservation_system.thakkalbooking;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -78,5 +79,16 @@ public class ThakkalBookingController implements ThakkalBookingModelControllerCa
 
 	public Ticket ticketdetails(int flightId, User user, String name, String date) {
 		return thakkalBookingModel.ticketdetailsthakkal(flightId,user,name,date);
+	}
+	@Override
+	public boolean checkDate(String date) {
+		SimpleDateFormat sdformat=new SimpleDateFormat("yyyy-MM-dd");
+		long millis=System.currentTimeMillis();
+		java.sql.Date currentDate=new java.sql.Date(millis);
+		String cdate=sdformat.format(currentDate);
+		if(cdate.compareTo(date)>0) {
+			return false;
+		}
+		return true;
 	}
 }

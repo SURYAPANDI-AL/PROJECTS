@@ -14,6 +14,7 @@ public class FlightTicketReservationSystemDataBase {
 
 	private static FlightTicketReservationSystemDataBase flightTicketReservationSystemDbInstance;
 	private int ticketId = 1;
+	private long savings=0;
 	private long supremeId = 123456789;
 	private List<AdminCredentials> adminCredentials = new ArrayList<>();
 	private List<ReservationOption> reservationOptions = new ArrayList<>();
@@ -104,6 +105,7 @@ public class FlightTicketReservationSystemDataBase {
 		for (Flight flight : flightDetail) {
 			if (flightId == flight.getFlightnumber()) {
 				flight.setSeats(flight.getSeats() - count);
+				savings+=count*1000;
 			}
 		}
 	}
@@ -143,7 +145,9 @@ public class FlightTicketReservationSystemDataBase {
 	public void makeReservationthakkal(int count, int flightId) {
 		for (Flight flight : flightDetail) {
 			if (flightId == flight.getFlightnumber()) {
-				flight.setSeats(flight.getThakkalSeats() - count);
+				flight.setThakkalSeats(flight.getThakkalSeats() - count);
+				System.out.println(flight.getThakkalSeats());
+				savings+=count*2500;
 			}
 		}
 	}
@@ -164,8 +168,10 @@ public class FlightTicketReservationSystemDataBase {
 			if (flightId == flight.getFlightnumber()) {
 				if (type.toLowerCase().equals("normal")) {
 					flight.setSeats(flight.getSeats() + 1);
+					savings-=1000;
 				} else {
-					flight.setSeats(flight.getThakkalSeats() + 1);
+					flight.setThakkalSeats(flight.getThakkalSeats() + 1);
+					savings-=2500;
 				}
 			}
 		}
@@ -180,5 +186,23 @@ public class FlightTicketReservationSystemDataBase {
 			return true;
 		}
 			return false; 
+	}
+
+	public long savings() {
+		// TODO Auto-generated method stub
+		return savings;
+	}
+
+	public boolean removeflight(int flightId) {
+		int i=0;
+		for (Flight flight : flightDetail) {
+			if (flightId == flight.getFlightnumber()) {
+				break;
+			}
+			i++;
+		}
+		if(i>=flightDetail.size())return false;
+		flightDetail.remove(i);
+		return true;
 	}
 }

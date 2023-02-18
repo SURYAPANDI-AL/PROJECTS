@@ -37,8 +37,10 @@ public class LoginView implements LoginViewCallBack {
 
 	public void loginSuccess(Admin adminUser) {
 		System.out.println("\n-->Welcome " + adminUser.getUserName() + "<--\nHope you have a good day.");
-		SetupReservationView setupReservation = new SetupReservationView();
-		System.out.println("\nMake Choice:\n1-Add flight\n2-Remove Flight\n3-Transactions\n4-Alter Flight Service\n5-Add new Admin\n6-Exit");
+		adminOption();
+	}
+	private void adminOption() {
+		System.out.println("\nMake Choice:\n1-Add flight service\n2-remove flight service\n3-Savings\n4-Add new Admin\n6-Exit");
 		int choice=scanner.nextInt();
 		loginController.checkAdminChoice(choice);
 	}
@@ -72,13 +74,21 @@ public class LoginView implements LoginViewCallBack {
 	@Override
 	public void removeFlight() {
 		// TODO Auto-generated method stub
-		
+		System.out.println("--->Removal  process of AirService<---");
+		System.out.println("Airplane Id:");
+		int flightNumber = scanner.nextInt();
+		if(loginController.removeFlight(flightNumber)) {
+			System.out.println("AirService no:"+flightNumber+" has been removed successfully.");
+		}
+		else {System.out.println("Invalid Id!");}
+		adminOption();
 	}
 
 	@Override
-	public void transactions() {
-		// TODO Auto-generated method stub
-		
+	public void savings() {
+		long amount=loginController.savings();
+		System.out.println("the savings made upto date:"+amount+".00/-");
+		adminOption();
 	}
 
 	@Override
@@ -103,7 +113,8 @@ public class LoginView implements LoginViewCallBack {
 
 	@Override
 	public void Exit() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Have a good day:)");
+		System.exit(0);
 	}
+
 }

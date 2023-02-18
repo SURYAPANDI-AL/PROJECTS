@@ -88,22 +88,29 @@ public class BookingView implements BookingViewCallBack{
 	}
 
 	public void payment(int payment) {
+		bookingController.ticketbooking(count);
 		System.out.println("\nOne Ticket==Rs1000\nMake payment-->" + "Rs." + payment);
 		int amount = scanner.nextInt();
 		bookingController.checkpayment(amount, payment);
 		bookingController.makeReservation(count, flightId);
-		bookingController.ticketbooking(count);
 		System.out.println("Thank you for making the transaction \n have a safe journey");
 	}
-
 	public void ticketInfo() {
 		System.out.println("--->Traveler Details<---");
 		System.out.println("Enter passenger name:");
 		String name = scanner.next();
-		System.out.println("Enter travel date (dd-mm-yyyy):");
+		System.out.println("Enter travel date (yyyy-mm-dd):");
 		String date = scanner.next();
-		Ticket sample = bookingController.ticketdetails(flightId, user, name, date);
-		ticketdisplay(sample);
+		if(bookingController.checkDate(date)) {
+			Ticket sample = bookingController.ticketdetails(flightId, user, name, date);
+			ticketdisplay(sample);
+		}
+		else
+			{
+			System.out.println("Enter valid details !");
+			ticketInfo();
+			}
+		
 	}
 
 	private void ticketdisplay(Ticket sample) {
@@ -111,7 +118,7 @@ public class BookingView implements BookingViewCallBack{
 		System.out.println(
 				" ------------------------->" + "  " + sample.getFlightname() + "  " + " <-------------------------\n");
 		System.out.println(
-				"TicketID:XVXX 0" + sample.getTicketId() + " 				Passenger Name:" + sample.getPassenger());
+				"TicketID:XXXX 0" + sample.getTicketId() + " 				Passenger Name:" + sample.getPassenger());
 		System.out.println("\nFlightID:" + sample.getFlightId() + "\n\nDepature Time:" + sample.getStarttime()
 				+ "0IST 			" + "Reach At:" + sample.getReachtime() + "0IST");
 		System.out.println("\n\nDate:" + sample.getDate() + "   	NORMAL BOOKING	  		Make A safe Trip.");

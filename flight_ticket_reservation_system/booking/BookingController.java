@@ -1,6 +1,11 @@
 package com.flight_ticket_reservation_system.booking;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.flight_ticket_reservation_system.dto.Flight;
@@ -81,6 +86,18 @@ public class BookingController implements BookingControllerCallBack,BookingModel
 
 	public Ticket ticketdetails(int flightId, User user, String name, String date) {
 		return bookingModel.ticketdetails(flightId,user,name,date);
+	}
+
+	@Override
+	public boolean checkDate(String date){
+		SimpleDateFormat sdformat=new SimpleDateFormat("yyyy-MM-dd");
+		long millis=System.currentTimeMillis();
+		java.sql.Date currentDate=new java.sql.Date(millis);
+		String cdate=sdformat.format(currentDate);
+		if(cdate.compareTo(date)>0) {
+			return false;
+		}
+		return true;
 	}
 
 	

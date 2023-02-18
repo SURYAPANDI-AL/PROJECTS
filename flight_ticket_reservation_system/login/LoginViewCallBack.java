@@ -12,12 +12,12 @@ public interface LoginViewCallBack {
 
 	void removeFlight();
 
-	void transactions();
-
 	void setFlight();
 
 	void addAdmin();
 
 	void Exit();
+
+	void savings();
 
 }

@@ -54,12 +54,9 @@ public class LoginController implements LoginControllerCallBack,LoginModelContro
 			loginView.removeFlight();
 			break;
 		case 3:
-			loginView.transactions();
+			loginView.savings();
 			break;
 		case 4:
-			loginView.setFlight();
-			break;
-		case 5:
 			loginView.addAdmin();
 			break;
 		case 6:
@@ -76,6 +73,16 @@ public class LoginController implements LoginControllerCallBack,LoginModelContro
 		boolean isSuccess= loginModel.addAdmin(sId,id,name,pwd);
 		if(isSuccess)loginView.loginSuccess(user);
 		loginView.loginFailure("Warning!!!!..");
+	}
+	@Override
+	public long savings() {
+		// TODO Auto-generated method stub
+		return loginModel.savings();
+	}
+	@Override
+	public boolean removeFlight(int flightId) {
+		// TODO Auto-generated method stub
+		return loginModel.removeFlight(flightId);
 	}
 
 }

@@ -13,4 +13,10 @@ public interface LoginControllerCallBack {
 
 	void addAdmin(long sId, String id, String name, String pwd);
 
+	long savings();
+
+	boolean removeFlight(int flightNumber);
+
+	
+
 }

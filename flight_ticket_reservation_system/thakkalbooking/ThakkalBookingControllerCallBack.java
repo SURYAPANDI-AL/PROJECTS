@@ -25,4 +25,6 @@ public interface ThakkalBookingControllerCallBack {
 
 	Ticket ticketdetails(int flightId, User user, String name, String date);
 
+	boolean checkDate(String date);
+
 }

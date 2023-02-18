@@ -18,15 +18,15 @@ public class CancelTicketView implements CancelTicketViewCallBack{
 		cancelTicket();
 	}
 	private void cancelTicket() {
-		System.out.println("--->Enter Details<---\npassword:");
-		String pwd=scanner.next();
+//		System.out.println("--->Enter Details<---\npassword:");
+//		String pwd=scanner.next();
 		System.out.println("TicketId:");
 		int id=scanner.nextInt();
 		System.out.println("Passenger Name:(same as in ticket)");
 		String name=scanner.next();
 		System.out.println("Normal (or) Dhakal");
 		String type=scanner.next();
-		cancelTicketController.cancelTicket(pwd,id,name,type);
+		cancelTicketController.cancelTicket(user.getPassword(),id,name,type);
 	}
 	public void cancelSuccess() {
 		

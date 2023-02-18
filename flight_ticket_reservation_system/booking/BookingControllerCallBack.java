@@ -25,4 +25,6 @@ public interface BookingControllerCallBack {
 
 	void ticketbooking(int count);
 
+	boolean checkDate(String date);
+
 }

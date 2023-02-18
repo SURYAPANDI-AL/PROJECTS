@@ -106,18 +106,25 @@ bookingSetup();
 		System.out.println("--->Traveler Details<---");
 		System.out.println("Enter passenger name:");
 		String name = scanner.next();
-		System.out.println("Enter travel date (dd-mm-yyyy):");
+		System.out.println("Enter travel date (yyyy-mm-dd):");
 		String date = scanner.next();
+		if(thakkalBookingController.checkDate(date)) {
 		sample = thakkalBookingController.ticketdetails(flightId, user, name, date);
 		ticketdisplay(sample);
-	}
+		}
+		else {
+			System.out.println("Enter valid details !");
+				ticketInfo();
+			}
+		}
+	
 
 	private void ticketdisplay(Ticket sample) {
 		System.out.println("**********************************************************************************");
 		System.out.println(
 				" ------------------------->" + "  " + sample.getFlightname() + "  " + " <-------------------------\n");
 		System.out.println(
-				"TicketID:" + sample.getTicketId() + " 				Passenger Name:" + sample.getPassenger());
+				"TicketID:XXXX" + sample.getTicketId() + " 				Passenger Name:" + sample.getPassenger());
 		System.out.println("\nFlightID:" + sample.getFlightId() + "\n\nDepature Time:" + sample.getStarttime()
 				+ "0IST 			" + "Reach At:" + sample.getReachtime() + "0IST");
 		System.out.println("\n\nDate:" + sample.getDate() + "   	DHAKAL BOOKING	  		Make A safe Trip.");
